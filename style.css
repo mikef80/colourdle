@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100vh;
+    font-family: 'Fira Sans', sans-serif;
+    background-color: #fff;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    /* padding: 1rem; */
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    max-height: 800px;
+    max-width: 500px;
+    height: 100%;
+    width: 90%;
+    /* padding: 1rem; */
+}
+
+.intro-text, .stats-text, .help-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+    max-height: 800px;
+    max-width: 500px;
+    height: 100%;
+    width: 912;
+    padding: 1rem;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    border-radius: 0;
+    background-color: darkgrey;
+    color: white;
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+/* .enter, .delete {
+    font-size: 0.1em;
+} */
+
+.enter::after {
+    content: '\23CE';
+}
+
+.delete::after {
+    content: '\232B';
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.board-container {
+    width: 90vw;
+}
+
+.board + .board {
+    padding-left: 1rem;
+}
+
+.square {
+    /* width: 150px; */
+    /* width: 450px; */
+    /* width: 50px; */
+    width: 1fr;
+    height: 50px;
+    border: 1px solid black;
+    color: black;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.swatch {
+    width: 45%;
+}
+
+.colour {
+    
+    width: 100%;
+    height: 150px;
+    border: 1px solid black;
+}
+
+.coffee {
+    font-size: 8px;
+}
+
+.strikes div {
+    border: 1px solid black;
+    padding: 0.5rem;
+    border-radius: 50%;
+    text-decoration: line-through;
+}
+
+.intro, .stats, .helpdiv {
+    display: none;
+    position: absolute;
+    /* top:50px; */
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    z-index: 1;
+}
+
+.keyboard-container {
+    touch-action: manipulation;
+}
+
+i {
+    padding: auto;
+    height: auto;
+    align-self: center;
+}
+
+
+.colouring :nth-child(1) {
+    color: red;
+}
+.colouring :nth-child(2) {
+    color: orange;
+}
+.colouring :nth-child(3) {
+    color: gold;
+}
+.colouring :nth-child(4) {
+    color: green;
+}
+.colouring :nth-child(5) {
+    color: lightskyblue;
+}
+.colouring :nth-child(6) {
+    color: blue;
+}
+.colouring :nth-child(7) {
+    color: purple;
+}
+.colouring :nth-child(8) {
+    color: violet;
+}
+.colouring :nth-child(9) {
+    color: pink;
+}
+.colouring :nth-child(10) {
+    color: brown;
+}
+
+.inline {
+    display: flex;
+}
+
+.help * {
+    padding: 0.25rem;
+}
+
+.board-1, .board-2, .board-3 {
+    width: 50vh;
+    aspect-ratio: 1 / 1;
+    display: inline-grid;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.score-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0,0,0,0.6);
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+}
+
+.scores {
+    display: inherit;
+    height: 85%;
+    width: 85%;
+    max-width: 500px;
+    max-height:800px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.scores h1 {
+    text-transform: uppercase;
+}
+
+.scores-chart {
+    height: 50%;
+    width: 90%;
+    background-color: black;
+}
+    
+.show {
+    display: flex;
+}
+
+.scores-headline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 90%;
+    justify-items: center;
+}
+
+.scores-headline div {
+    justify-content: center;
+}
+
+.scores-headline div :first-child {
+    font-size: 3rem;
+}
+
+.scores-headline div * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scores-footer {
+    display: flex;
+    width: 90%;
+    height: 15%;
+    justify-content: space-between;
+}
+
+.scores-countdown, .scores-share {
+    /* background-color: blue; */
+    /* border: 1px solid grey; */
+    width: 45%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.scores-countdown :first-child, .scores-share :first-child {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.scores-countdown :nth-child(2), .scores-share :nth-child(2) {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+
+#myChart, .myChart {
+    display: none;
+    height: 300px;
+    width: 300px;
+}
+
+@media only screen and (min-width:415px) {
+    .board-container {
+        width: 100%;
+    }
+}
+
+.gridTitle {
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+}
