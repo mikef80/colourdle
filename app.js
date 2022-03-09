@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    if (capNum(currentGuessArr)) {
+    /* if (capNum(currentGuessArr)) {
       window.alert('Values must be between 0 and 255');
       let l = currentGuessArr.length;
       let arr = currentGuessArr;
@@ -234,11 +234,11 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(total);
       }
 
-      }
+    } */
 
 
-      return;
-    }
+      /* return;
+    } */
 
     const currentGuess = currentGuessArr.join('');
     
@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         digitEl.classList.add('animate__flipInX');  
                 
         digitEl.style = `background-color:${tileColour};`;
-        updateKeyColours(digit, tileColour);
+        // updateKeyColours(digit, tileColour);
         const tileCorrect = isTileCorrect(digit, index);
 
         evalArr.push(tileCorrect);     
