@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let kbDis = false;
   let guessCountArr = JSON.parse(window.localStorage.getItem('guessCountArray')) || [];
   let boardArr = [];
+  
     
   // console.log('rgb: ' + guessedRGB.length);
   
@@ -45,9 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* function createShareGrid(input) {
-
-  } */
+  function createShareGrid(arr) {
+    console.log(arr);
+    let output = [];
+    arr.forEach(item => {
+      if (item === 'correct') {
+        console.log('correct');
+        output.push('🟩');
+      } else if (item === 'valid') {
+        console.log('valid');
+        output.push('🟨');
+      } else if (item === 'invalid') {
+        console.log('invalid');
+        output.push('⬛');
+      }
+    });
+    
+    console.log(output);
+  }
 
 
   function clearLocalStorage() {
@@ -277,15 +293,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 
         digitEl.style = `background-color:${tileColour};`;
         const tileCorrect = isTileCorrect(digit, index);
+        // console.log(tileCorrect);
 
         evalArr.push(tileCorrect);     
         boardArr.push(tileCorrect);     
-        
+        console.log('done');
       }, interval * index);
     })
     
-    console.log(boardArr);
-    console.log(evalArr);
+    
     guesses.push(currentGuess)
     window.localStorage.setItem('boardEval',JSON.stringify(guesses));
    
@@ -302,6 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           window.alert('Congratulations!');
           toggleStats();
+          createShareGrid(boardArr);
         },interval * 9)
         console.log('guessCount: ' + guessCount);
         guessCountArr.push(guessCount);
@@ -316,7 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTotalGames();
         updateLastPlayedDate();
         updateStats();
-        createShareGrid();
         
         return;
       } else {
@@ -334,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           window.alert(`Sorry, you have no more guesses! The answer is ${outputAnswer}`);
           toggleStats();
+          createShareGrid(boardArr);
         },interval * 9)
         document.getElementById('test').textContent = outputAnswer;
         window.localStorage.setItem('currentStreak', Number(0));
@@ -352,6 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   }
 
+    // createShareGrid();
     updateLastPlayedDate();
     guessedRGB.push([]);
     // console.log(guessedRGB);
