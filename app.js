@@ -16,10 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const guessedRGB = [[]];
   let guessCount = 0;    
   let kbDis = false;
-  
-  
+  let guessCountArr = JSON.parse(window.localStorage.getItem('guessCountArray')) || [];
+    
   // console.log('rgb: ' + guessedRGB.length);
   
+  clearLocalStorage();
   buildGrid(rows,3);
   setSwatch();
   updateStats();
@@ -27,21 +28,33 @@ document.addEventListener('DOMContentLoaded', () => {
   checkPlayedToday();
   
   const keys = document.querySelectorAll('.keyboard-row button');
+  const statsShare = document.querySelector('.scores-share button');
 
-  // CAP NUMBERS AT 255 OR HIGHLIGHT ERROR
-  /* function capNum(input) {
-    console.log(input);
-    let l = input.length;
-    
-    for (let i = 0; i < l; i += 3) {
-      let test = (input[i] * 100) + (input[i+1] * 10) + (input[i+2] * 1);
-      console.log(test);
+ 
 
-      if (test < 0 || test > 255) {
-        return true;
-      }
+  statsShare.addEventListener('click', () => {
+    console.log('test');
+    if (navigator.share) {
+      navigator.share({
+        title: 'web.dev',
+        text: 'Check out web.dev.',
+        url: 'https://web.dev/',
+      })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
     }
-  } */
+  });
+
+
+  function clearLocalStorage() {
+    let localStorageReset = window.localStorage.getItem('resetFlag') || 0;
+    // console.log('lsr: ' + localStorageReset);
+    if (!localStorageReset) {
+      // console.log('this would reset stuff');
+      window.localStorage.clear();
+      window.localStorage.setItem('resetFlag', 1);
+    }
+  }
 
 
   // COUNTDOWN TO NEXT COLOURDLE
@@ -224,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    /* if (capNum(currentGuessArr)) {
+    if (capNum(currentGuessArr)) {
       window.alert('Values must be between 0 and 255');
       let l = currentGuessArr.length;
       let arr = currentGuessArr;
@@ -234,10 +247,10 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(total);
       }
 
-    } */
+    }
 
 
-      /* return;
+  /*     return;
     } */
 
     const currentGuess = currentGuessArr.join('');
@@ -258,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
         digitEl.classList.add('animate__flipInX');  
                 
         digitEl.style = `background-color:${tileColour};`;
-        // updateKeyColours(digit, tileColour);
         const tileCorrect = isTileCorrect(digit, index);
 
         evalArr.push(tileCorrect);     
@@ -283,6 +295,10 @@ document.addEventListener('DOMContentLoaded', () => {
           window.alert('Congratulations!');
           toggleStats();
         },interval * 9)
+        console.log('guessCount: ' + guessCount);
+        guessCountArr.push(guessCount);
+        window.localStorage.setItem('guessCountArray', JSON.stringify(guessCountArr));
+        
         const totalWins = window.localStorage.getItem('totalWins') || 0;
         window.localStorage.setItem('totalWins', Number(totalWins) + 1);
         const currentStreak = window.localStorage.getItem('currentStreak') || 0;

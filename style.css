@@ -188,7 +188,7 @@ i {
     justify-content: center;
 }
 
-.score-modal {
+.score-modal, .updates-modal {
     display: none;
     position: fixed;
     top: 0;
@@ -278,7 +278,7 @@ i {
 
 
 #myChart, .myChart {
-    display: none;
+    /* display: none; */
     height: 300px;
     width: 300px;
 }
