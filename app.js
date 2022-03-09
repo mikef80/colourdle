@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const statsShare = document.querySelector('.scores-share i');
 
  
-
   statsShare.addEventListener('click', () => {
     console.log('test');
     if (navigator.share) {
