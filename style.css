@@ -266,15 +266,25 @@ i {
     justify-content: space-around;
 }
 
-.scores-countdown :first-child, .scores-share :first-child {
+/* .scores-countdown:first-child {
     font-size: 1.2rem;
     text-transform: uppercase;
 }
 
-.scores-countdown :nth-child(2), .scores-share :nth-child(2) {
+.scores-share:first-child {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.scores-countdown:nth-child(2) {
     font-size: 2.5rem;
     letter-spacing: 2px;
 }
+
+.scores-share:nth-child(2) {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+} */
 
 
 #myChart, .myChart {
@@ -294,3 +304,7 @@ i {
     width: 100%;
     text-align: center;
 }
+
+/* .fa-share-nodes:before {
+    height: 50px;
+} */

@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let guessCount = 0;    
   let kbDis = false;
   let guessCountArr = JSON.parse(window.localStorage.getItem('guessCountArray')) || [];
+  let boardArr = [];
     
   // console.log('rgb: ' + guessedRGB.length);
   
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   checkPlayedToday();
   
   const keys = document.querySelectorAll('.keyboard-row button');
-  const statsShare = document.querySelector('.scores-share button');
+  const statsShare = document.querySelector('.scores-share i');
 
  
 
@@ -36,14 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('test');
     if (navigator.share) {
       navigator.share({
-        title: 'web.dev',
-        text: 'Check out web.dev.',
-        url: 'https://web.dev/',
+        title: 'Colourdle!',
+        text: `Completed it today in ${guesses.length}/6 guesses.`,
+        // url: 'https://web.dev/',
       })
         .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error));
     }
   });
+
+  function createShareGrid(input) {
+
+  }
 
 
   function clearLocalStorage() {
@@ -237,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    if (capNum(currentGuessArr)) {
+    /* if (capNum(currentGuessArr)) {
       window.alert('Values must be between 0 and 255');
       let l = currentGuessArr.length;
       let arr = currentGuessArr;
@@ -247,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(total);
       }
 
-    }
+    } */
 
 
   /*     return;
@@ -259,6 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let interval = 400;
 
     let evalArr = [];
+    /* let boardArr = []; */
     let forcedCountdown = 0;
     
     currentGuessArr.forEach((digit, index) => {
@@ -274,10 +280,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const tileCorrect = isTileCorrect(digit, index);
 
         evalArr.push(tileCorrect);     
-                
+        boardArr.push(tileCorrect);     
+        
       }, interval * index);
     })
     
+    console.log(boardArr);
+    console.log(evalArr);
     guesses.push(currentGuess)
     window.localStorage.setItem('boardEval',JSON.stringify(guesses));
    
@@ -308,6 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTotalGames();
         updateLastPlayedDate();
         updateStats();
+        createShareGrid();
         
         return;
       } else {
