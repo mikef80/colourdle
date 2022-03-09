@@ -45,9 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  function createShareGrid(input) {
+  /* function createShareGrid(input) {
 
-  }
+  } */
 
 
   function clearLocalStorage() {
