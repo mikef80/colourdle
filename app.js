@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let kbDis = false;
   let guessCountArr = JSON.parse(window.localStorage.getItem('guessCountArray')) || [];
   let boardArr = [];
+  let sharePic;
   
     
   // console.log('rgb: ' + guessedRGB.length);
@@ -35,20 +36,27 @@ document.addEventListener('DOMContentLoaded', () => {
  
   statsShare.addEventListener('click', () => {
     console.log('test');
+    console.log(sharePic);
+    console.log(navigator.share);
     if (navigator.share) {
       navigator.share({
         title: 'Colourdle!',
-        text: `Completed it today in ${guesses.length}/6 guesses.`,
+        // text: `Completed it today in ${guesses.length}/6 guesses.`
+        text: `${sharePic}`,
+              // `${sharePic}`,
         // url: 'https://web.dev/',
       })
         .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error));
+    } else {
+      console.log('what the actual!');
     }
   });
 
   function createShareGrid(arr) {
-    console.log(arr);
     let output = [];
+    console.log(arr);
+    
     arr.forEach(item => {
       if (item === 'correct') {
         console.log('correct');
@@ -60,9 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('invalid');
         output.push('⬛');
       }
-    });
-    
-    console.log(output);
+    })
+
+    for (let i = 9; i < output.length; i += 10) {
+      output.splice(i,0,`\n`);
+    }
+
+    sharePic = output.join('');
   }
 
 
@@ -191,14 +203,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // getTileColour
-  function getTileColour(digit, index) {
+  function getTileColour(value) {
     // console.log(answer);
 
-    const correct = "rgb(83, 141, 78)";
-    const valid = "rgb(181, 159, 59)";
-    const invalid = "rgb(58, 58, 60)";
+    if (value === 'correct') {
+      return "rgb(83, 141, 78)";
+    } else if (value === 'valid') {
+      return "rgb(181, 159, 59)";
+    } else {
+      return "rgb(58, 58, 60)";
+    }
     
-    const isCorrectDigit = answer.includes(digit);
+    
+    /* const isCorrectDigit = answer.includes(digit);
 
     if(!isCorrectDigit) {
       updateKeyColours(digit,'rgb(50, 50, 50)', 'black')
@@ -212,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return correct;
     }
 
-    return valid;
+    return valid; */
   }
 
   // isTileCorrect
@@ -282,7 +299,44 @@ document.addEventListener('DOMContentLoaded', () => {
     /* let boardArr = []; */
     let forcedCountdown = 0;
     
-    currentGuessArr.forEach((digit, index) => {
+    // iterate over currentGuessArr
+    // check if tileCorrect
+    // push to evalarr and boardarr
+
+
+
+    // iterate over boardArr
+
+    currentGuessArr.forEach((digit,index) => {
+        const tileCorrect = isTileCorrect(digit, index);
+
+        evalArr.push(tileCorrect);     
+        boardArr.push(tileCorrect);
+    })
+
+    boardArr.forEach((value,index) => {
+      setTimeout(() => {
+        const tileColour = getTileColour(value);
+        const digitId = firstDigitId + index;
+        const digitEl = document.getElementById(digitId);
+        
+        digitEl.classList.add('animate__flipInX');  
+                
+        digitEl.style = `background-color:${tileColour};`;
+        // const tileCorrect = isTileCorrect(digit, index);
+        // console.log(tileCorrect);
+
+        // evalArr.push(tileCorrect);     
+        // boardArr.push(tileCorrect);     
+        // console.log('done');
+      }, interval * index);
+    })
+
+
+
+
+    
+    /* currentGuessArr.forEach((digit, index) => {
             
       setTimeout(() => {
         const tileColour = getTileColour(digit, index);
@@ -299,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
         boardArr.push(tileCorrect);     
         console.log('done');
       }, interval * index);
-    })
+    }) */
     
     
     guesses.push(currentGuess)
