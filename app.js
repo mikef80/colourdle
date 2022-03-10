@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navigator.share) {
       navigator.share({
         title: 'Colourdle!',
-        text: `Completed it today in ${moves}/6\n\n${link}\n\n${sharePic}`,
+        text: `Colourdle! ${date}: ${moves}/6\n\n${link}\n\n${sharePic}`,
       })
         /* .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error)); */
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (async () => {
         try {
           await navigator.clipboard.writeText(/* location.href */
-            `Colourdle! ${date}: ${moves}/6\n\n${link}\n\n${sharePic}`,
+            `Colourdle! ${date}: ${moves}/6\n\n${link}\n\n${sharePic}`
           );
           
           window.alert('Copied to clipboard');
