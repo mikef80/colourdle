@@ -35,11 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const shareDialog = document.querySelector('.share-dialog');
  
   statsShare.addEventListener('click', () => {
+
+    let moves = gameState === 'LOST' ? 'X' : `${guesses.length}`;
+    let link = `https://mikef80.github.io/Colourdle`;
+    let date = new Date().toLocaleString();
         
     if (navigator.share) {
       navigator.share({
         title: 'Colourdle!',
-        text: `Completed it today in ${guesses.length}/6 guesses.\n\n${sharePic}`,
+        text: `Completed it today in ${moves}/6 guesses.\n\n${sharePic}`,
       })
         /* .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error)); */
@@ -47,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (async () => {
         try {
           await navigator.clipboard.writeText(/* location.href */
-            `Completed it today in ${guesses.length}/6 guesses.\n\n${sharePic}`,
+            `Colourdle! ${date}: ${moves}/6\n\n${link}\n\n${sharePic}`,
           );
           
           window.alert('Copied to clipboard');
@@ -79,10 +83,20 @@ document.addEventListener('DOMContentLoaded', () => {
         output.push('⬛');
       }
     })
-
+    
     for (let i = 9; i < output.length; i += 10) {
       output.splice(i,0,`\n`);
     }
+
+    for (let i = 3; i < output.length; i += 4) {
+      if (output[i] !== '\n') {
+        output.splice(i,0,'   ');
+      }
+      
+      
+    }
+
+    console.log(output);
 
     sharePic = output.join('');
   }
