@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navigator.share) {
       navigator.share({
         title: 'Colourdle!',
-        text: `Completed it today in ${guesses.length}/6 guesses.`,
-        text: `${sharePic}`,
+        text: `Completed it today in ${guesses.length}/6 guesses.`
+              `${sharePic}`,
               // `${sharePic}`,
         // url: 'https://web.dev/',
       })
