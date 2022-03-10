@@ -309,6 +309,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentGuessArr.forEach((digit,index) => {
         const tileCorrect = isTileCorrect(digit, index);
+        if(tileCorrect === 'invalid') {
+          updateKeyColours(digit,'rgb(50, 50, 50)', 'black');
+        }
 
         evalArr.push(tileCorrect);     
         boardArr.push(tileCorrect);
@@ -317,6 +320,10 @@ document.addEventListener('DOMContentLoaded', () => {
     evalArr.forEach((value,index) => {
       setTimeout(() => {
         const tileColour = getTileColour(value);
+        
+
+
+
         const digitId = firstDigitId + index;
         const digitEl = document.getElementById(digitId);
         
