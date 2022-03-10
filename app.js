@@ -20,9 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let boardArr = [];
   let sharePic;
   
-    
-  // console.log('rgb: ' + guessedRGB.length);
-  
   clearLocalStorage();
   buildGrid(rows,3);
   setSwatch();
