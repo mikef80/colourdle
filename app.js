@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         boardArr.push(tileCorrect);
     })
 
-    boardArr.forEach((value,index) => {
+    evalArr.forEach((value,index) => {
       setTimeout(() => {
         const tileColour = getTileColour(value);
         const digitId = firstDigitId + index;
