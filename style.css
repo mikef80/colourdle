@@ -305,6 +305,6 @@ i {
     text-align: center;
 }
 
-/* .fa-share-nodes:before {
-    height: 50px;
-} */
+.fa-share-nodes:hover {
+    color: lightgrey;
+}

@@ -32,16 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const keys = document.querySelectorAll('.keyboard-row button');
   const statsShare = document.querySelector('.scores-share i');
-
+  const shareDialog = document.querySelector('.share-dialog');
  
   statsShare.addEventListener('click', () => {
     console.log('test');
     console.log(sharePic);
-    console.log(navigator.share);
+    console.log(navigator.userAgent || navigator.vendor || window.opera);
     if (navigator.share) {
       navigator.share({
         title: 'Colourdle!',
-        // text: `Completed it today in ${guesses.length}/6 guesses.`
+        text: `Completed it today in ${guesses.length}/6 guesses.`,
         text: `${sharePic}`,
               // `${sharePic}`,
         // url: 'https://web.dev/',
