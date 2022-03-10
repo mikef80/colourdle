@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (let i = 3; i < output.length; i += 4) {
       if (output[i] !== '\n') {
-        output.splice(i,0,'   ');
+        output.splice(i,0,'  ');
       }
       
       
