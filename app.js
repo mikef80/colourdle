@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   statsShare.addEventListener('click', () => {
 
     let moves = gameState === 'LOST' ? 'X' : `${guesses.length}`;
-    let link = `https://mikef80.github.io/Colourdle`;
-    let date = new Date().toLocaleString();
+    let link = `https://mikef80.github.io/colourdle`;
+    let date = new Date().toLocaleDateString();
         
     if (navigator.share) {
       navigator.share({
