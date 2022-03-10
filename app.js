@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.log(window.localStorage.getItem('gameState') === 'IN PROGRESS');
     if (today === lastPlayedDate && (status === 'WON' || status === 'LOST')) {
       loadBoardState();
+      createShareGrid(boardArr);
       setTimeout(() => {
         toggleStats();
       },400 * 9)
