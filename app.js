@@ -35,36 +35,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const shareDialog = document.querySelector('.share-dialog');
  
   statsShare.addEventListener('click', () => {
-    console.log('test');
-    console.log(sharePic);
-    console.log(navigator.userAgent || navigator.vendor || window.opera);
+        
     if (navigator.share) {
       navigator.share({
         title: 'Colourdle!',
         text: `Completed it today in ${guesses.length}/6 guesses.\n\n${sharePic}`,
-              // `${sharePic}`,
-        // url: 'https://web.dev/',
       })
-        .then(() => console.log('Successful share'))
-        .catch((error) => console.log('Error sharing', error));
+        /* .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error)); */
     } else {
-      console.log('what the actual!');
+      (async () => {
+        try {
+          await navigator.clipboard.writeText(/* location.href */
+            `Completed it today in ${guesses.length}/6 guesses.\n\n${sharePic}`,
+          );
+          
+          window.alert('Copied to clipboard');
+        } catch (err) {
+          console.error('Failed to copy: ', err);
+        }
+      })();
+
+      // copyPageUrl();
+
+
+      
     }
   });
 
   function createShareGrid(arr) {
     let output = [];
-    console.log(arr);
+    // console.log(arr);
     
     arr.forEach(item => {
       if (item === 'correct') {
-        console.log('correct');
+        // console.log('correct');
         output.push('🟩');
       } else if (item === 'valid') {
-        console.log('valid');
+        // console.log('valid');
         output.push('🟨');
       } else if (item === 'invalid') {
-        console.log('invalid');
+        // console.log('invalid');
         output.push('⬛');
       }
     })
