@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navigator.share) {
       navigator.share({
         title: 'Colourdle!',
-        text: `Completed it today in ${moves}/6 guesses.\n\n${sharePic}`,
+        text: `Completed it today in ${moves}/6\n\n${link}\n\n${sharePic}`,
       })
         /* .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error)); */
