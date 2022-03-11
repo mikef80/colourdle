@@ -590,6 +590,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function toggleStats() {
     let stats = document.querySelector('.score-modal');
+    
+    let status = window.localStorage.getItem('gameState');
+    let share = document.querySelector('.scores-share');
+    if (status === 'IN PROGRESS') {
+      share.style.display = 'none';
+    } else {
+      share.style.display = '';
+    }
+
+
     stats.classList.toggle('show');
     if (stats.classList.contains('show')) {
       window.localStorage.setItem('modalView', 'true')
