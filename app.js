@@ -56,10 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
           console.error('Failed to copy: ', err);
         }
       })();
-
-      // copyPageUrl();
-
-
       
     }
   });
@@ -286,6 +282,18 @@ document.addEventListener('DOMContentLoaded', () => {
     swatch.style.backgroundColor = ColorVal;
   }
 
+  function checkInputs(arr) {
+    let r = (arr[0] * 100) + (arr[1] * 10) + arr[2];
+    let g = (arr[3] * 100) + (arr[4] * 10) + arr[5];
+    let b = (arr[6] * 100) + (arr[7] * 10) + arr[8];
+    
+    if (r > 255 || g > 255 || b > 255) {
+      return false;
+    }
+
+    return true;
+  }
+
   // handleSubmitGuess
   function handleSubmitGuess() {
     const currentGuessArr = getCurrentGuessArr();
@@ -294,6 +302,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentGuessArr.length !== 9) {
       window.alert('Guess must be 9 digits long!');
       return;
+    }
+
+    // add check here for valid RGB valus
+    if(!checkInputs(currentGuessArr)) {
+      console.log('Error');
+      window.alert('Each seperate RGB value must not exceed 255. Have another go!');
+      return;
+    } else {
+      console.log('fine');
     }
 
     const currentGuess = currentGuessArr.join('');
