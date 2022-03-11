@@ -266,25 +266,14 @@ i {
     justify-content: space-around;
 }
 
-/* .scores-countdown:first-child {
-    font-size: 1.2rem;
+.scores-footer * :nth-child(2) {
+    /* color: red; */
+    font-size: 2rem;
+}
+
+.scores-footer * :nth-child(1) {
     text-transform: uppercase;
 }
-
-.scores-share:first-child {
-    font-size: 1.2rem;
-    text-transform: uppercase;
-}
-
-.scores-countdown:nth-child(2) {
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-}
-
-.scores-share:nth-child(2) {
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-} */
 
 
 #myChart, .myChart {
