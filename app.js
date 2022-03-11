@@ -296,22 +296,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    /* if (capNum(currentGuessArr)) {
-      window.alert('Values must be between 0 and 255');
-      let l = currentGuessArr.length;
-      let arr = currentGuessArr;
-      
-      for (let i = 0; i < l; i += 3) {
-        let total = (arr[i] * 100) + (arr[i+1] * 10) + (arr[i+2] * 1);
-        console.log(total);
-      }
-
-    } */
-
-
-  /*     return;
-    } */
-
     const currentGuess = currentGuessArr.join('');
     
     const firstDigitId = guessCount * 9 + 1;
@@ -666,7 +650,7 @@ document.addEventListener('DOMContentLoaded', () => {
       key.onclick = ({target}) => {
           const number = target.getAttribute('data-key');
                       
-          if (number === 'enter') {
+          if (number === 'enter' && !numOOR) {
               handleSubmitGuess();
               return;
           }
