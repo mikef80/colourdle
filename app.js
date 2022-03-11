@@ -307,11 +307,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // add check here for valid RGB valus
     if(!checkInputs(currentGuessArr)) {
       console.log('Error');
-      window.alert('Each seperate RGB value must not exceed 255. Have another go!');
+      window.alert('Each seperate RGB value must be between 0 and 255. Have another go!');
       return;
     } else {
       console.log('fine');
-    }
+    } 
 
     const currentGuess = currentGuessArr.join('');
     
