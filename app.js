@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let boardArr = [];
   let sharePic;
   
+  
   clearLocalStorage();
   buildGrid(rows,3);
   setSwatch();
@@ -35,12 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let moves = gameState === 'LOST' ? 'X' : `${guesses.length}`;
     let link = `https://mikef80.github.io/colourdle`;
-    let date = new Date().toLocaleDateString();
+    let date = new Date();
+    let launchDate = new Date(2022, 2, 10);
+    let dayCount = Math.floor((date.getTime() - launchDate.getTime()) / 86400000);
+    console.log(dayCount);
         
     if (navigator.share) {
       navigator.share({
         title: 'Colourdle!',
-        text: `Colourdle! ${date}: ${moves}/6\n\n${link}\n\n${sharePic}`,
+        text: `Colourdle! #${dayCount}: ${moves}/6\n\n${link}\n\n${sharePic}`,
       })
         /* .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error)); */
@@ -48,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (async () => {
         try {
           await navigator.clipboard.writeText(/* location.href */
-            `Colourdle! ${date}: ${moves}/6\n\n${link}\n\n${sharePic}`
+            `Colourdle! #${dayCount}: ${moves}/6\n\n${link}\n\n${sharePic}`
           );
           
           window.alert('Copied to clipboard');
