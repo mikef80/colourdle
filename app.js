@@ -17,9 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let guessCount = 0;    
   let kbDis = false;
   let guessCountArr = JSON.parse(window.localStorage.getItem('guessCountArray')) || [];
+  let gameDurationArr = JSON.parse(window.localStorage.getItem('gameDurationArray')) || [];
   let boardArr = [];
   let sharePic;
-  let startTime = new Date();
+  let startTime;
   let finishTime;
   let gameDuration;
   
@@ -168,9 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
       kbDis = true;
     } else if (today === lastPlayedDate && status === 'IN PROGRESS') {
       loadBoardState();
+      startTime = Date.parse(window.localStorage.getItem('startTime'));
+      console.log(typeof startTime);
     } else if (today !== lastPlayedDate) {
       window.localStorage.setItem('gameState','IN PROGRESS');
       window.localStorage.setItem('boardEval',[]);
+      startTime = new Date();
+      window.localStorage.setItem('startTime',startTime);
     }
     // LOAD BOARD STATE HERE
     /* if (status === 'IN PROGRESS') {
@@ -318,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } /* else {
       console.log('fine');
     }  */
-    
+
     updateGuessSwatch(currentGuessArr);
 
     const currentGuess = currentGuessArr.join('');
@@ -409,7 +414,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // ADD MAX STREAK
         finishTime = new Date();
         gameDuration = (finishTime - startTime) / 1000;
+        gameDurationArr.push(gameDuration);
+        window.localStorage.setItem('gameDurationArray', JSON.stringify(gameDurationArr));
         console.log(gameDuration);
+
         setTimeout(() => {
           window.alert('Congratulations!');
           toggleStats();
@@ -444,6 +452,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if ((today !== lastPlayedDate) || ((today === lastPlayedDate) && status !== 'LOST')) {
         finishTime = new Date();
         gameDuration = (finishTime - startTime) / 1000;
+        gameDurationArr.push(gameDuration);
+        window.localStorage.setItem('gameDurationArray', JSON.stringify(gameDurationArr));
+        console.log(gameDuration);
+
         setTimeout(() => {
           window.alert(`Sorry, you have no more guesses! The answer is ${outputAnswer}`);
           toggleStats();
