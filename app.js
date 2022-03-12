@@ -454,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameDuration = (finishTime - startTime) / 1000;
         gameDurationArr.push(gameDuration);
         window.localStorage.setItem('gameDurationArray', JSON.stringify(gameDurationArr));
-        console.log(gameDuration);
+        // console.log(gameDuration);
 
         setTimeout(() => {
           window.alert(`Sorry, you have no more guesses! The answer is ${outputAnswer}`);
