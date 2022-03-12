@@ -59,6 +59,9 @@ const config = {
     },
     scales: {
       y: {
+        ticks: {
+          precision: 0
+        },
         beginAtZero: true,
         title: {
           display: true,
