@@ -45,7 +45,7 @@ const config = {
     plugins: {
       title: {
         display: true,
-        text: 'Guess Distribution'
+        text: 'Distribution of Guesses'
       },
       subtitle: {
         display: false,
@@ -60,14 +60,14 @@ const config = {
         beginAtZero: true,
         title: {
           display: true,
-          text: '# of guesses'
+          text: '# of games'
         }
       },
       x: {
         beginAtZero: true,
         title: {
           display: true,
-          text: '# of games'
+          text: '# of guesses'
         }
       }
     },
