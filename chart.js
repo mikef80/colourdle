@@ -42,11 +42,34 @@ const config = {
   type: "bar",
   data: data,
   options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Guess Distribution'
+      },
+      subtitle: {
+        display: false,
+        text: 'Custom Chart Subtitle'
+      },
+      legend: {
+        display: false
+      }
+    },
     scales: {
       y: {
-        title: 'test',
         beginAtZero: true,
+        title: {
+          display: true,
+          text: '# of guesses'
+        }
       },
+      x: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: '# of games'
+        }
+      }
     },
   },
 };

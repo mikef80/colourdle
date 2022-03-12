@@ -277,9 +277,9 @@ i {
 
 
 #myChart, .myChart {
-    /* display: none; */
-    height: 300px;
-    width: 300px;
+    
+    /* height: 90%; */
+    width: 90%;
 }
 
 @media only screen and (min-width:415px) {
