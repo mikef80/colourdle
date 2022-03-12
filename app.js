@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
     }
 
-    console.log(output);
+    // console.log(output);
 
     sharePic = output.join('');
   }
