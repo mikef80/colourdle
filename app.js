@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (today === lastPlayedDate && status === 'IN PROGRESS') {
       loadBoardState();
       startTime = Date.parse(window.localStorage.getItem('startTime'));
-      console.log(typeof startTime);
+      // console.log(typeof startTime);
     } else if (today !== lastPlayedDate) {
       window.localStorage.setItem('gameState','IN PROGRESS');
       window.localStorage.setItem('boardEval',[]);
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // add check here for valid RGB valus
     if(!checkInputs(currentGuessArr)) {
-      console.log('Error');
+      // console.log('Error');
       window.alert('Each seperate RGB value must be between 0 and 255. Have another go!');
       return;
     } /* else {
@@ -702,7 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
       key.onclick = ({target}) => {
           const number = target.getAttribute('data-key');
                       
-          if (number === 'enter' && !numOOR) {
+          if (number === 'enter') {
               handleSubmitGuess();
               return;
           }
