@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   statsShare.addEventListener('click', () => {
 
     let moves = gameState === 'LOST' ? 'X' : `${guesses.length}`;
-    let link = `https://www.colourdle.co.uk`;
+    let link = `colourdle.co.uk`;
     let date = new Date();
     let launchDate = new Date(2022, 2, 10);
     let dayCount = Math.floor((date.getTime() - launchDate.getTime()) / 86400000);
