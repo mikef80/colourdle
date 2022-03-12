@@ -35,6 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const keys = document.querySelectorAll('.keyboard-row button');
   const statsShare = document.querySelector('.scores-share i');
   const shareDialog = document.querySelector('.share-dialog');
+
+  function refreshStats() {
+    var script = document.createElement('script');
+    script.setAttribute('type', 'text/javascript');
+    script.setAttribute('src', './chart.js');
+    document.head.appendChild(script);
+  }
+
+
+
  
   statsShare.addEventListener('click', () => {
 
@@ -436,6 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTotalGames();
         updateLastPlayedDate();
         updateStats();
+        refreshStats();
         
         return;
       } else {
@@ -472,6 +483,8 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTotalGames()
         updateLastPlayedDate();
         updateStats();
+        // refreshStats();
+
         return
       } else {
         return;

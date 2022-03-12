@@ -1,3 +1,5 @@
+let stats = document.querySelector('#stats');
+
 const arr = JSON.parse(window.localStorage.getItem('guessCountArray'));
 const counts = {};
 
