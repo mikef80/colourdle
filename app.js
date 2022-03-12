@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let guessCountArr = JSON.parse(window.localStorage.getItem('guessCountArray')) || [];
   let boardArr = [];
   let sharePic;
+  let startTime = new Date();
+  let finishTime;
+  let gameDuration;
   
   
   clearLocalStorage();
@@ -301,21 +304,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // handleSubmitGuess
   function handleSubmitGuess() {
     const currentGuessArr = getCurrentGuessArr();
-    updateGuessSwatch(currentGuessArr);
-
+    
     if (currentGuessArr.length !== 9) {
       window.alert('Guess must be 9 digits long!');
       return;
     }
-
+    
     // add check here for valid RGB valus
     if(!checkInputs(currentGuessArr)) {
       console.log('Error');
       window.alert('Each seperate RGB value must be between 0 and 255. Have another go!');
       return;
-    } else {
+    } /* else {
       console.log('fine');
-    } 
+    }  */
+    
+    updateGuessSwatch(currentGuessArr);
 
     const currentGuess = currentGuessArr.join('');
     
@@ -403,12 +407,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if ((today !== lastPlayedDate) || ((today === lastPlayedDate) && status !== 'WON')) {
         // ADD MAX STREAK
+        finishTime = new Date();
+        gameDuration = (finishTime - startTime) / 1000;
+        console.log(gameDuration);
         setTimeout(() => {
           window.alert('Congratulations!');
           toggleStats();
           createShareGrid(boardArr);
         },interval * 9)
-        console.log('guessCount: ' + guessCount);
+        // console.log('guessCount: ' + guessCount);
         guessCountArr.push(guessCount);
         window.localStorage.setItem('guessCountArray', JSON.stringify(guessCountArr));
         
@@ -435,6 +442,8 @@ document.addEventListener('DOMContentLoaded', () => {
       let status = window.localStorage.getItem('gameState') || 0;
 
       if ((today !== lastPlayedDate) || ((today === lastPlayedDate) && status !== 'LOST')) {
+        finishTime = new Date();
+        gameDuration = (finishTime - startTime) / 1000;
         setTimeout(() => {
           window.alert(`Sorry, you have no more guesses! The answer is ${outputAnswer}`);
           toggleStats();
