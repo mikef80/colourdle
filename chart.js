@@ -36,17 +36,10 @@ const config = {
     options: {
         responsive: true,
         indexAxis: 'x',
-        scales: {
-            /* ticks: {
+        scale: {
+            ticks: {
               precision: 0
-            }, */
-            xAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Number of guesses'
-                }
-            }],
-            
+            },
         },         
         
     }
