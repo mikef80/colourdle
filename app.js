@@ -624,6 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function toggleStats() {
     let stats = document.querySelector('.score-modal');
+    refreshStats();
     
     let status = window.localStorage.getItem('gameState');
     let share = document.querySelector('.scores-share');
