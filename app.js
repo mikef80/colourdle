@@ -80,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createShareGrid(arr) {
     let output = [];
-    // console.log(arr);
     
     arr.forEach(item => {
       if (item === 'correct') {
