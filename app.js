@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let moves = gameState === 'LOST' ? 'X' : `${guesses.length}`;
     let link = `colourdle.co.uk`;
     let date = new Date();
-    let launchDate = new Date(2022, 2, 10);
-    let dayCount = Math.floor((date.getTime() - launchDate.getTime()) / 86400000);
+    let launchDate = new Date(2022, 2, 13);
+    let dayCount = Math.floor((date.getTime() - launchDate.getTime()) / 86400000) + 1;
     console.log(dayCount);
         
     if (navigator.share) {
