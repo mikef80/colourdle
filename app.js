@@ -272,8 +272,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // isTileCorrect
-  function isTileCorrect(digit, index) {
+  function isTileCorrect(digit, index, counts) {
     const isCorrectDigit = answer.includes(digit);
+    counts[digit] -= 1;
+    console.log(counts);
 
     if(!isCorrectDigit) {
       return 'invalid';
@@ -283,10 +285,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const isCorrectPosition = digit === digitInThatPosition;
 
     if(isCorrectPosition) {
+      counts[digit] -= 1;
       return 'correct';
     }
 
-    return 'valid';
+    if (counts[digit] > 0) {
+      return 'valid';
+    } else {
+      return 'invalid';
+    }
   }
 
   // update key colours
@@ -344,12 +351,19 @@ document.addEventListener('DOMContentLoaded', () => {
     /* let boardArr = []; */
     let forcedCountdown = 0;
 
-    console.log(currentGuess);
+    // implementing correct colouring of squares based on count of each number submitted. Issue #28
+
+    // iterate over the answer array, not the guess arr
     
-    
+    const counts = {};
+    for (const num of currentGuessArr) {
+      counts[num] = counts[num] ? counts[num] + 1 : 1;
+    }
+
+    // end isue #28
 
     currentGuessArr.forEach((digit,index) => {
-        const tileCorrect = isTileCorrect(digit, index);
+        const tileCorrect = isTileCorrect(digit, index, counts);
         if(tileCorrect === 'invalid') {
           updateKeyColours(digit,'rgb(50, 50, 50)', 'black');
         }
@@ -363,7 +377,6 @@ document.addEventListener('DOMContentLoaded', () => {
     evalArr.forEach((value,index) => {
       setTimeout(() => {
         const tileColour = getTileColour(value);
-        
 
 
 
