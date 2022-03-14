@@ -274,8 +274,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // isTileCorrect
   function isTileCorrect(digit, index, counts) {
     const isCorrectDigit = answer.includes(digit);
-    counts[digit] -= 1;
-    console.log(counts);
+    // console.log(counts);
+    counts[digit] > 0 ? counts[digit] -= 1 : counts[digit] = 0;
+    // console.log(counts);
 
     if(!isCorrectDigit) {
       return 'invalid';
@@ -286,6 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if(isCorrectPosition) {
       counts[digit] -= 1;
+      
       return 'correct';
     }
 
@@ -354,11 +356,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // implementing correct colouring of squares based on count of each number submitted. Issue #28
 
     // iterate over the answer array, not the guess arr
-    
+    // gets count of each digit in answer array
+
     const counts = {};
-    for (const num of currentGuessArr) {
+    for (const num of answer) {
       counts[num] = counts[num] ? counts[num] + 1 : 1;
     }
+    console.log(counts);
 
     // end isue #28
 
@@ -373,6 +377,8 @@ document.addEventListener('DOMContentLoaded', () => {
        /*  console.log(evalArr);
         console.log(boardArr); */
     })
+
+    console.log(counts);
 
     evalArr.forEach((value,index) => {
       setTimeout(() => {
