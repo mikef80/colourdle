@@ -3,7 +3,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html, body {
@@ -80,7 +79,6 @@ button:hover {
 
 .board-container {
     width: 90vw;
-    flex: 1 0 auto;
 }
 
 .board + .board {
