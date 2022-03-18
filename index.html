@@ -4,17 +4,15 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5H302JQB8"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-Q5H302JQB8');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q5H302JQB8');
     </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    
     <script src="https://kit.fontawesome.com/9d17d6bd20.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./media/favicons/apple-touch-icon.png">
@@ -29,7 +27,6 @@
             <header class="flex">
                 <i class="fa-solid fa-chart-column fa-lg" id="stats"></i>
                 <h1 class="colouring inline">
-                    <!-- Colourdle! -->
                     <div>C</div>
                     <div>o</div>
                     <div>l</div>
@@ -45,8 +42,6 @@
                     <i class="fa-solid fa-circle-info fa-lg" id="info"></i>
                     <i class="fa-solid fa-circle-question fa-lg" id="help"></i>
                 </div>
-                <!-- <h1><i class="fa-solid fa-circle-info"></i></h1> -->
-                <!-- <h6>It's like Wordle, but not as fun<sup>TM</sup></h6> -->
             </header>
             <div class="intro flex">
                 <div class="intro-text">
@@ -63,14 +58,6 @@
                     <p>It is available to play for free - but if you'd like to support it, please feel free to <a href="https://www.buymeacoffee.com/mikef">buy me a coffee</a>!</p>
                 </div>
             </div>
-            <!-- <div class="stats flex">
-                <div class="stats-text">
-                    <i class="fa-solid stats-close fa-xmark"></i>
-                    <br />
-                    <p>Nothing to be seen here yet.  Well done for trying though!
-                    <br />
-                </div>
-            </div> -->
             <div class="helpdiv flex">
                 <div class="help-text">
                     <i class="fa-solid help-close fa-xmark"></i>
@@ -94,10 +81,6 @@
                     <p>The “Last Guess” square will show you which colour you actually entered and how it compares to the target colour.</p>
                 </div>
             </div>
-            <!-- <br />
-            <div class="strikes flex">
-            </div>
-            <br /> -->
             <div class="colour-display flex">
                 <div class="swatch">
                     <p>Target:</p>
@@ -109,18 +92,12 @@
                 </div>
             </div>
             <br />
-            
-            
-            
-            
-            
             <div class="board-container flex">
                 <div class="board-1 board"></div>
                 <div class="board-2 board"></div>
                 <div class="board-3 board"></div>
             </div>
             <br />            
-            
             <div class="keyboard-container">
                 <div class="keyboard-row">
                     <button data-key="7">7</button>
@@ -143,9 +120,7 @@
                     <button class="enter" data-key="enter"></button>
                 </div>
             </div>
-
             <div id="test"></div>
-            
             <div class="score-modal">
                 <div class="scores">
                     <div class="stats-close">
@@ -185,21 +160,15 @@
                             <p><i class="fa-solid fa-share-nodes fa-xl"></i></p>
                         </div>
                     </div>
-                    
                 </div>
             </div>
-
             <div class="updates-modal"></div>
-
-            <div class="screen-shot-modal">
-                
-            </div>
-
+            <div class="screen-shot-modal"></div>
             <br />
-
             <p class="coffee">❤️ Colourdle? Feel free to <a href="https://www.buymeacoffee.com/mikef" target="_blank">buy me a coffee</a>!</p>
         </div>
     </div>
+
     <!-- SCRIPTS -->
     <script src="./app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
