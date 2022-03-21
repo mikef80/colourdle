@@ -330,6 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentGuessArr.forEach((digit,index) => {
         const tileCorrect = isTileCorrect(digit, index);
+        console.log(tileCorrect);
         if(tileCorrect === 'invalid') {
           updateKeyColours(digit,'rgb(50, 50, 50)', 'black');
         }
