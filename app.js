@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let startTime;
   let finishTime;
   let gameDuration;
+  let numCount = {};
   
   
   clearLocalStorage();
@@ -157,6 +158,23 @@ document.addEventListener('DOMContentLoaded', () => {
       swatch.style.backgroundColor = swatchColour;
       currentColour = answer;
       window.localStorage.setItem('currentColour', currentColour);
+
+      
+      numCountTotal();
+      
+    }
+    
+    function numCountTotal() {
+      // this creates an object with the count of every digit in the answer
+      console.log(numCount);
+      numCount = {};
+      for (digit of answer) {
+        if (numCount[digit]) {
+          numCount[digit] += 1;
+        } else {
+          numCount[digit] = 1;
+        }
+      }
   }
 
   // check if played today
@@ -250,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // isTileCorrect
   function isTileCorrect(digit, index) {
     const isCorrectDigit = answer.includes(digit);
+    // console.log(numCount);
 
     if(!isCorrectDigit) {
       return 'invalid';
@@ -259,9 +278,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const isCorrectPosition = digit === digitInThatPosition;
 
     if(isCorrectPosition) {
+      numCount[digit] -= 1;
       return 'correct';
     }
 
+    numCount[digit] -= 1;
     return 'valid';
   }
 
@@ -293,6 +314,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // handleSubmitGuess
   function handleSubmitGuess() {
+
+    numCountTotal();
+
     const currentGuessArr = getCurrentGuessArr();
     
     if (currentGuessArr.length !== 9) {
@@ -324,13 +348,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // check if tileCorrect
     // push to evalarr and boardarr
 
-
+    console.log(numCount);
 
     // iterate over boardArr
 
     currentGuessArr.forEach((digit,index) => {
         const tileCorrect = isTileCorrect(digit, index);
-        console.log(tileCorrect);
+        // console.log(tileCorrect);
         if(tileCorrect === 'invalid') {
           updateKeyColours(digit,'rgb(50, 50, 50)', 'black');
         }
@@ -339,51 +363,65 @@ document.addEventListener('DOMContentLoaded', () => {
         boardArr.push(tileCorrect);
     })
 
+    // console.log(evalArr);
+    // console.log(boardArr);
+    console.log(numCount);
+
+    Object.keys(numCount).forEach(key => {
+      // console.log(key, numCount[key]);
+      if (numCount[key] < 0) {
+        console.log('rectify here');
+        
+        let x = numCount[key];
+        
+        // for loop, starting at value of numCount[key] (assigned to new variable as numCount key won't change)
+        for (let i = 8; i > -1; i--) {
+          console.log(currentGuessArr[i]);
+          // iterate over currentGuessArr backwards
+          // console.log(boardArr[i]);
+
+
+          // 
+
+
+          if ((evalArr[i] === 'valid') && (x < 0) && (currentGuessArr[i] === Number(key))) {
+            console.log('update' + i);
+            x++;
+            evalArr[i] = 'invalid';
+            console.log('gc: ' & (guessCount + 1) * i);
+            // boardArr[(guessCount + 1) * i] = 'invalid';
+            
+          }
+          // look for key and get index
+          // check corresponsing index in eval arr
+          // if value = valid, then change to invalid and +1 to loop iterator
+          
+        }
+        // +1 each time, run whilst less than 0
+
+
+      }
+    })
+
+    console.log(evalArr);
+
+    console.log(boardArr);
+
+
     evalArr.forEach((value,index) => {
       setTimeout(() => {
         const tileColour = getTileColour(value);
         
-
-
-
         const digitId = firstDigitId + index;
         const digitEl = document.getElementById(digitId);
         
         digitEl.classList.add('animate__flipInX');  
                 
         digitEl.style = `background-color:${tileColour};`;
-        // const tileCorrect = isTileCorrect(digit, index);
-        // console.log(tileCorrect);
-
-        // evalArr.push(tileCorrect);     
-        // boardArr.push(tileCorrect);     
-        // console.log('done');
+       
       }, interval * index);
     })
-
-
-
-
-    
-    /* currentGuessArr.forEach((digit, index) => {
-            
-      setTimeout(() => {
-        const tileColour = getTileColour(digit, index);
-        const digitId = firstDigitId + index;
-        const digitEl = document.getElementById(digitId);
-        
-        digitEl.classList.add('animate__flipInX');  
-                
-        digitEl.style = `background-color:${tileColour};`;
-        const tileCorrect = isTileCorrect(digit, index);
-        // console.log(tileCorrect);
-
-        evalArr.push(tileCorrect);     
-        boardArr.push(tileCorrect);     
-        console.log('done');
-      }, interval * index);
-    }) */
-    
+   
     
     guesses.push(currentGuess)
     window.localStorage.setItem('boardEval',JSON.stringify(guesses));
