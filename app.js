@@ -186,33 +186,26 @@ document.addEventListener('DOMContentLoaded', () => {
       startTime = new Date();
       window.localStorage.setItem('startTime',startTime);
     }
-    // LOAD BOARD STATE HERE
-    /* if (status === 'IN PROGRESS') {
-      // console.log('load board state');
-      loadBoardState();
-    } */
   }
 
   function loadBoardState() {
-    // console.log('Load board state');
-    // need to load board state in here
+    
     let boardState = window.localStorage.getItem('boardEval');
     if (boardState) {
       boardState = JSON.parse(boardState);
 
     }
-    // console.log(boardState[0]);
-    // console.log(boardState[0][4]);
+    
     let n = 1;
-    // console.log('l: ' + boardState.length);
+    
     if (boardState) {
       for (let i = 0; i < boardState.length; i++) {
         for (let j = 0; j < 9; j++) {
           let sq = document.querySelector(`.sq${n}`);
-          // console.log(boardState[i][j]);
+          
           sq.innerHTML = boardState[i][j];
           updateGuesses(Number(boardState[i][j]));
-          // n < 9 ? n++ : n;
+          
           n++
         }
         handleSubmitGuess();
@@ -243,7 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // getTileColour
   function getTileColour(value) {
-    // console.log(answer);
 
     if (value === 'correct') {
       return "rgb(83, 141, 78)";
@@ -253,22 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return "rgb(58, 58, 60)";
     }
     
-    
-    /* const isCorrectDigit = answer.includes(digit);
-
-    if(!isCorrectDigit) {
-      updateKeyColours(digit,'rgb(50, 50, 50)', 'black')
-      return invalid;
-    }
-
-    const digitInThatPosition = Number(answer.charAt(index));
-    const isCorrectPosition = digit === digitInThatPosition;
-
-    if(isCorrectPosition) {
-      return correct;
-    }
-
-    return valid; */
   }
 
   // isTileCorrect
