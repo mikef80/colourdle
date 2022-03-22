@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function setSwatch() {
       let today = new Date();
-      let yearBegin = new Date(2022, 0, 15);
+      let yearBegin = new Date(2022, 2, 13); //also changed this value to match date above.  was 2022,0,15
       let msPassed = today - yearBegin;
       let millisecsInDay = 1000 * 60 * 60 * 24;
       let daysPassed = Math.floor(msPassed / millisecsInDay);
