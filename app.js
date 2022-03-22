@@ -261,8 +261,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return "rgb(181, 159, 59)";
     } else {
       return "rgb(58, 58, 60)";
-    }
-    
+    } 
+  }
+
+  function getKeyColour() {
+    console.log('get key colours here');
   }
 
   // isTileCorrect
@@ -355,13 +358,18 @@ document.addEventListener('DOMContentLoaded', () => {
     currentGuessArr.forEach((digit,index) => {
         const tileCorrect = isTileCorrect(digit, index);
         // console.log(tileCorrect);
-        if(tileCorrect === 'invalid') {
+        if (tileCorrect === 'invalid') {
           updateKeyColours(digit,'rgb(50, 50, 50)', 'black');
         }
+
+
+
 
         evalArr.push(tileCorrect);     
         boardArr.push(tileCorrect);
     })
+
+    getKeyColour();
 
     // console.log(evalArr);
     // console.log(boardArr);
@@ -377,19 +385,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // for loop, starting at value of numCount[key] (assigned to new variable as numCount key won't change)
         for (let i = 8; i > -1; i--) {
           console.log(currentGuessArr[i]);
-          // iterate over currentGuessArr backwards
-          // console.log(boardArr[i]);
-
-
-          // 
-
-
+          
           if ((evalArr[i] === 'valid') && (x < 0) && (currentGuessArr[i] === Number(key))) {
             console.log('update' + i);
             x++;
             evalArr[i] = 'invalid';
             console.log('gc: ' & (guessCount + 1) * i);
-            // boardArr[(guessCount + 1) * i] = 'invalid';
             
           }
           // look for key and get index
