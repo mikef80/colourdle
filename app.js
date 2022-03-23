@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let date = new Date();
     let launchDate = new Date(2022, 2, 13);
     let dayCount = Math.floor((date.getTime() - launchDate.getTime()) / 86400000) + 1;
-    console.log(dayCount);
+    // console.log(dayCount);
         
     if (navigator.share) {
       navigator.share({
@@ -82,17 +82,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function createShareGrid(arr) {
     let output = [];
     
-    arr.forEach(item => {
-      if (item === 'correct') {
-        // console.log('correct');
-        output.push('🟩');
-      } else if (item === 'valid') {
-        // console.log('valid');
-        output.push('🟨');
-      } else if (item === 'invalid') {
-        // console.log('invalid');
-        output.push('⬛');
-      }
+    // amended this function as boardArr is now an array of arrays, each containing an single guess, rather than one big array of all individual numnbers input
+    arr.forEach(subArr => {
+      subArr.forEach(item => {
+        if (item === 'correct') {
+          // console.log('correct');
+          output.push('🟩');
+        } else if (item === 'valid') {
+          // console.log('valid');
+          output.push('🟨');
+        } else if (item === 'invalid') {
+          // console.log('invalid');
+          output.push('⬛');
+        }
+      })
     })
     
     for (let i = 9; i < output.length; i += 10) {
@@ -166,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function numCountTotal() {
       // this creates an object with the count of every digit in the answer
-      console.log(numCount);
+      // console.log(numCount);
       numCount = {};
       for (digit of answer) {
         if (numCount[digit]) {
@@ -265,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getKeyColour() {
-    console.log('get key colours here');
+    // console.log('get key colours here');
   }
 
   // isTileCorrect
@@ -351,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // check if tileCorrect
     // push to evalarr and boardarr
 
-    console.log(numCount);
+    // console.log(numCount);
 
     // iterate over boardArr
 
@@ -366,31 +369,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         evalArr.push(tileCorrect);     
-        boardArr.push(tileCorrect);
+        // boardArr.push(tileCorrect); //Got rid of board pushing here, as it was doing it tile by tile. Moved to line 409
     })
 
     getKeyColour();
 
     // console.log(evalArr);
     // console.log(boardArr);
-    console.log(numCount);
+    // console.log(numCount);
 
     Object.keys(numCount).forEach(key => {
       // console.log(key, numCount[key]);
       if (numCount[key] < 0) {
-        console.log('rectify here');
+        /* console.log */('rectify here');
         
         let x = numCount[key];
         
         // for loop, starting at value of numCount[key] (assigned to new variable as numCount key won't change)
         for (let i = 8; i > -1; i--) {
-          console.log(currentGuessArr[i]);
+          // console.log(currentGuessArr[i]);
           
           if ((evalArr[i] === 'valid') && (x < 0) && (currentGuessArr[i] === Number(key))) {
-            console.log('update' + i);
+            // console.log('update' + i);
             x++;
             evalArr[i] = 'invalid';
-            console.log('gc: ' & (guessCount + 1) * i);
+            // console.log('gc: ' & (guessCount + 1) * i);
             
           }
           // look for key and get index
@@ -404,9 +407,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
 
-    console.log(evalArr);
 
-    console.log(boardArr);
+    boardArr.push(evalArr); //moved board push here so that it's only done once the above corrections starting line 380 have been made
+
+    // console.log(evalArr);
+
+    // console.log(boardArr);
 
 
     evalArr.forEach((value,index) => {
@@ -441,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameDuration = (finishTime - startTime) / 1000;
         gameDurationArr.push(gameDuration);
         window.localStorage.setItem('gameDurationArray', JSON.stringify(gameDurationArr));
-        console.log(gameDuration);
+        // console.log(gameDuration);
 
         setTimeout(() => {
           window.alert('Congratulations!');
@@ -717,7 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   
       if (!Number.isInteger(Number(input))) {
-        console.log('You must enter numbers, not alphabetical characters!');
+        // console.log('You must enter numbers, not alphabetical characters!');
         return;
       }
   
