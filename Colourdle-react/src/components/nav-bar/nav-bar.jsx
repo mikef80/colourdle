@@ -7,7 +7,10 @@ const NavBar = () => {
           <ul>
               <li>
                   <Link to='/'>Link 1</Link>
-            </li>
+              </li>
+              <li>
+                  <i class="fa-solid fa-chart-column fa-lg" id="stats"></i>
+              </li>
           </ul>
     </nav>
   )
