@@ -1,17 +1,16 @@
-import './App.css'
-import { Outlet, Link } from 'react-router-dom'
+// import "./App.css";
+import { Outlet, Link } from "react-router-dom";
 
-function App () {
-  
+import styles from "./App.module.css";
+
+function App() {
   return (
-    <div>
-      Testkuhdfkjdfsh
-      <br />
-      <Link to={ `navbar` }>NavBar!</Link>
-      <br />
+    <div className={styles.App}>
+      {/* <Link to={`navbar`}>NavBar!</Link>
+      <br /> */}
       <Outlet />
     </div>
-  )
+  );
 }
 
 export default App;
