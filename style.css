@@ -147,31 +147,31 @@ i {
     color: red;
 }
 .colouring :nth-child(2) {
-    color: orange;
+    color: #ffa500;
 }
 .colouring :nth-child(3) {
-    color: gold;
+    color: #ffd700;
 }
 .colouring :nth-child(4) {
-    color: green;
+    color: #008000;
 }
 .colouring :nth-child(5) {
-    color: lightskyblue;
+    color: #87cefa;
 }
 .colouring :nth-child(6) {
     color: blue;
 }
 .colouring :nth-child(7) {
-    color: purple;
+    color: #800080;
 }
 .colouring :nth-child(8) {
-    color: violet;
+    color: #ee82ee;
 }
 .colouring :nth-child(9) {
-    color: pink;
+    color: #ffc0cb;
 }
 .colouring :nth-child(10) {
-    color: brown;
+    color: #a52a2a;
 }
 
 .inline {
