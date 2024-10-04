@@ -1,176 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <!-- Google Adsense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6829106444577531"
+      crossorigin="anonymous"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5H302JQB8"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-Q5H302JQB8');
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Q5H302JQB8");
     </script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://kit.fontawesome.com/9d17d6bd20.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="./media/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./media/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./media/favicons/favicon-16x16.png">
-    <link rel="manifest" href="./media/favicons/site.webmanifest">
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./media/favicons/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./media/favicons/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./media/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="./media/favicons/site.webmanifest" />
     <title>Colourdle!</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="game">
-            <header class="flex">
-                <i class="fa-solid fa-chart-column fa-lg" id="stats"></i>
-                <h1 class="colouring inline">
-                    <div>C</div>
-                    <div>o</div>
-                    <div>l</div>
-                    <div>o</div>
-                    <div>u</div>
-                    <div>r</div>
-                    <div>d</div>
-                    <div>l</div>
-                    <div>e</div>
-                    <div>!</div>
-                </h1>
-                <div class="inline help">
-                    <i class="fa-solid fa-circle-info fa-lg" id="info"></i>
-                    <i class="fa-solid fa-circle-question fa-lg" id="help"></i>
-                </div>
-            </header>
-            <div class="intro flex">
-                <div class="intro-text">
-                    <i class="fa-solid intro-close fa-xmark"></i>
-                    <br />
-                    <p>About Colourdle!</p>
-                    <br />
-                    <p>One new Colourdle! will be available each day.</p>
-                    <br />
-                    <p>Colourdle! has been heavily inspired by Wordle!, which was created by <a href="http://www.twitter.com/powerlanguish">Josh Wardle</a> and is now run by the <a href="http://www.twitter.com/nytimes">NYT</a></p>
-                    <br />
-                    <p>It was inspired by a friend (Sam) who suggested this as an idea and has been created by <a href="http://www.twitter.com/mikef80">Mike</a>, both for fun and to practice his coding skills in HTML, CSS and JavaScript.</p>
-                    <br />
-                    <p>It is available to play for free - but if you'd like to support it, please feel free to <a href="https://www.buymeacoffee.com/mikef">buy me a coffee</a>!</p>
-                </div>
-            </div>
-            <div class="helpdiv flex">
-                <div class="help-text">
-                    <i class="fa-solid help-close fa-xmark"></i>
-                    <br />
-                    <p>Welcome to Colourdle!</p>
-                    <br />
-                    <p>The object of the game is to correctly guess the RGB value of the target colour swatch within 6 tries.</p>
-                    <br />
-                    <p>Each guess must be a valid colour.</p>
-                    <br />
-                    <p>The first three columns are for the R(ed) value, the next three are for the G(reen) value and the last three are for the B(lue) value. All colour codes must be three digits long, i.e. you must use leading zeros (for example, 053, not 53). All colour codes have a maximum value of 255.</p>
-                    <br />
-                    <p>At the end of the line, press or click enter to submit your answer.</p>
-                    <br />
-                    <p><img src="./media/greenFive.jpg" alt="success" srcset=""> - If a square is green then the number in that spot was correct.</p>
-                    <br />
-                    <p><img src="./media/yellowOne.jpg" alt="success" srcset=""> - If a square is yellow then the number is in the colour code somewhere, but is in the wrong spot.</p>
-                    <br />
-                    <p><img src="./media/greySix.jpg" alt="success" srcset=""> - If the square is grey then the number is not included in the colour code.</p>
-                    <br />
-                    <p>The “Last Guess” square will show you which colour you actually entered and how it compares to the target colour.</p>
-                </div>
-            </div>
-            <div class="colour-display flex">
-                <div class="swatch">
-                    <p>Target:</p>
-                    <div class="colour target"></div>
-                </div>
-                <div class="swatch">
-                    <p>Last Guess:</p>
-                    <div class="colour guess-colour"></div>
-                </div>
-            </div>
+      <div class="game">
+        <header class="flex">
+          <i class="fa-solid fa-chart-column fa-lg" id="stats"></i>
+          <h1 class="colouring inline">
+            <div>C</div>
+            <div>o</div>
+            <div>l</div>
+            <div>o</div>
+            <div>u</div>
+            <div>r</div>
+            <div>d</div>
+            <div>l</div>
+            <div>e</div>
+            <div>!</div>
+          </h1>
+          <div class="inline help">
+            <i class="fa-solid fa-circle-info fa-lg" id="info"></i>
+            <i class="fa-solid fa-circle-question fa-lg" id="help"></i>
+          </div>
+        </header>
+        <div class="intro flex">
+          <div class="intro-text">
+            <i class="fa-solid intro-close fa-xmark"></i>
             <br />
-            <div class="board-container flex">
-                <div class="board-1 board"></div>
-                <div class="board-2 board"></div>
-                <div class="board-3 board"></div>
-            </div>
-            <br />            
-            <div class="keyboard-container">
-                <div class="keyboard-row">
-                    <button data-key="7">7</button>
-                    <button data-key="8">8</button>
-                    <button data-key="9">9</button>
-                </div>
-                <div class="keyboard-row">
-                    <button data-key="4">4</button>
-                    <button data-key="5">5</button>
-                    <button data-key="6">6</button>
-                </div>
-                <div class="keyboard-row">
-                    <button data-key="1">1</button>
-                    <button data-key="2">2</button>
-                    <button data-key="3">3</button>
-                </div>
-                <div class="keyboard-row">
-                    <button class="delete" data-key="delete"></button>
-                    <button data-key="0">0</button>
-                    <button class="enter" data-key="enter"></button>
-                </div>
-            </div>
-            <div id="test"></div>
-            <div class="score-modal">
-                <div class="scores">
-                    <div class="stats-close">
-                        <i class="fa-solid intro-close fa-xmark"></i>
-                    </div>
-                    <h1>statistics</h1>
-                    <div class="scores-headline">
-                        <div class="played">
-                            <p class="played-number">0</p>
-                            <p>Played</p>
-                        </div>
-                        <div class="winPerc">
-                            <p class="win-percent">0</p>
-                            <p>Win %</p>
-                        </div>
-                        <div class="streak">
-                            <p class="current-streak">0</p>
-                            <p>Current</p>
-                            <p>Streak</p>
-                        </div>
-                        <div class="maxStr">
-                            <p class="max-streak">0</p>
-                            <p>Max</p>
-                            <p>Streak</p>
-                        </div>
-                    </div>
-                    <div class="myChart">
-                        <canvas id="myChart" class="myChart"></canvas>
-                    </div>
-                    <div class="scores-footer">
-                        <div class="scores-countdown">
-                            <p>Next Colourdle!</p>
-                            <p class="countdownClock"></p>
-                        </div>
-                        <div class="scores-share">
-                            <p>share</p>
-                            <p><i class="fa-solid fa-share-nodes fa-xl"></i></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="updates-modal"></div>
-            <div class="screen-shot-modal"></div>
+            <p>About Colourdle!</p>
             <br />
-            <p class="coffee">❤️ Colourdle? Feel free to <a href="https://www.buymeacoffee.com/mikef" target="_blank">buy me a coffee</a>!</p>
+            <p>One new Colourdle! will be available each day.</p>
+            <br />
+            <p>
+              Colourdle! has been heavily inspired by Wordle!, which was created by
+              <a href="http://www.twitter.com/powerlanguish">Josh Wardle</a> and is now run by
+              the <a href="http://www.twitter.com/nytimes">NYT</a>
+            </p>
+            <br />
+            <p>
+              It was inspired by a friend (Sam) who suggested this as an idea and has been
+              created by <a href="http://www.twitter.com/mikef80">Mike</a>, both for fun and to
+              practice his coding skills in HTML, CSS and JavaScript.
+            </p>
+            <br />
+            <p>
+              It is available to play for free - but if you'd like to support it, please feel
+              free to <a href="https://www.buymeacoffee.com/mikef">buy me a coffee</a>!
+            </p>
+          </div>
         </div>
+        <div class="helpdiv flex">
+          <div class="help-text">
+            <i class="fa-solid help-close fa-xmark"></i>
+            <br />
+            <p>Welcome to Colourdle!</p>
+            <br />
+            <p>
+              The object of the game is to correctly guess the RGB value of the target colour
+              swatch within 6 tries.
+            </p>
+            <br />
+            <p>Each guess must be a valid colour.</p>
+            <br />
+            <p>
+              The first three columns are for the R(ed) value, the next three are for the
+              G(reen) value and the last three are for the B(lue) value. All colour codes must
+              be three digits long, i.e. you must use leading zeros (for example, 053, not 53).
+              All colour codes have a maximum value of 255.
+            </p>
+            <br />
+            <p>At the end of the line, press or click enter to submit your answer.</p>
+            <br />
+            <p>
+              <img src="./media/greenFive.jpg" alt="success" srcset="" /> - If a square is
+              green then the number in that spot was correct.
+            </p>
+            <br />
+            <p>
+              <img src="./media/yellowOne.jpg" alt="success" srcset="" /> - If a square is
+              yellow then the number is in the colour code somewhere, but is in the wrong spot.
+            </p>
+            <br />
+            <p>
+              <img src="./media/greySix.jpg" alt="success" srcset="" /> - If the square is grey
+              then the number is not included in the colour code.
+            </p>
+            <br />
+            <p>
+              The “Last Guess” square will show you which colour you actually entered and how
+              it compares to the target colour.
+            </p>
+          </div>
+        </div>
+        <div class="colour-display flex">
+          <div class="swatch">
+            <p>Target:</p>
+            <div class="colour target"></div>
+          </div>
+          <div class="swatch">
+            <p>Last Guess:</p>
+            <div class="colour guess-colour"></div>
+          </div>
+        </div>
+        <br />
+        <div class="board-container flex">
+          <div class="board-1 board"></div>
+          <div class="board-2 board"></div>
+          <div class="board-3 board"></div>
+        </div>
+        <br />
+        <div class="keyboard-container">
+          <div class="keyboard-row">
+            <button data-key="7">7</button>
+            <button data-key="8">8</button>
+            <button data-key="9">9</button>
+          </div>
+          <div class="keyboard-row">
+            <button data-key="4">4</button>
+            <button data-key="5">5</button>
+            <button data-key="6">6</button>
+          </div>
+          <div class="keyboard-row">
+            <button data-key="1">1</button>
+            <button data-key="2">2</button>
+            <button data-key="3">3</button>
+          </div>
+          <div class="keyboard-row">
+            <button class="delete" data-key="delete"></button>
+            <button data-key="0">0</button>
+            <button class="enter" data-key="enter"></button>
+          </div>
+        </div>
+        <div id="test"></div>
+        <div class="score-modal">
+          <div class="scores">
+            <div class="stats-close">
+              <i class="fa-solid intro-close fa-xmark"></i>
+            </div>
+            <h1>statistics</h1>
+            <div class="scores-headline">
+              <div class="played">
+                <p class="played-number">0</p>
+                <p>Played</p>
+              </div>
+              <div class="winPerc">
+                <p class="win-percent">0</p>
+                <p>Win %</p>
+              </div>
+              <div class="streak">
+                <p class="current-streak">0</p>
+                <p>Current</p>
+                <p>Streak</p>
+              </div>
+              <div class="maxStr">
+                <p class="max-streak">0</p>
+                <p>Max</p>
+                <p>Streak</p>
+              </div>
+            </div>
+            <div class="myChart">
+              <canvas id="myChart" class="myChart"></canvas>
+            </div>
+            <div class="scores-footer">
+              <div class="scores-countdown">
+                <p>Next Colourdle!</p>
+                <p class="countdownClock"></p>
+              </div>
+              <div class="scores-share">
+                <p>share</p>
+                <p><i class="fa-solid fa-share-nodes fa-xl"></i></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="updates-modal"></div>
+        <div class="screen-shot-modal"></div>
+        <br />
+        <p class="coffee">
+          ❤️ Colourdle? Feel free to
+          <a href="https://www.buymeacoffee.com/mikef" target="_blank">buy me a coffee</a>!
+        </p>
+      </div>
     </div>
 
     <!-- SCRIPTS -->
     <script src="./app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</body>
+  </body>
 </html>
