@@ -183,8 +183,7 @@ i {
 }
 
 .board-1, .board-2, .board-3 {
-    width: 50vh;
-    aspect-ratio: 1 / 1;
+    width: 100%;
     display: inline-grid;
     align-items: center;
     justify-items: center;
